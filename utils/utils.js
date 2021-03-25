@@ -40,8 +40,10 @@ export function bnDec(decimals) {
 
 export function getProvider() {
   if (typeof window !== "undefined") {
-    if (window.ethereum.isMetaMask) return 'Metamask'
-    if (window.ethereum.isImToken) return 'imToken'
+    if (window.ethereum) {
+      if (window.ethereum.isMetaMask) return 'Metamask'
+      if (window.ethereum.isImToken) return 'imToken'
+    }
   }
   return 'Wallet'
 }
